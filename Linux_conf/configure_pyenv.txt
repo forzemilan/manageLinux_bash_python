@@ -1,0 +1,38 @@
+#we can use pyenv to control which python version we are using, it so convenient for us to transfer
+#diff python version in our lab_env or work_env
+
+#step 1: down pyenv from github to folder  ~/.pyenv and configure it to file ~/.bash_profile
+
+git clone git@github.com:pyenv/pyenv.git ~/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"'  >> ~/.bash_profile
+echo 'eval "$(pyenv init -)"' >> ~/.bash_profile
+
+#step 2: reload .bash_profile to make pyenv configuration into effect.
+source ~/.bash_profile
+
+#step 3: you can use comand "pyenv --help" or go to URL:"https://github.com/pyenv/pyenv" to 
+#learn how to use pyenv
+
+$samples as below:
+
+#1  list all the aviable python version we can use
+pyenv install --list
+
+#2  install python with specific version
+pyenv install -v 3.6.0
+pyenv install -v 2.7.13
+
+#3   check system python verison  | the line start with * means the system current python version
+pyenv versions
+
+#4   transfer python version from system defaul version to specific version
+pyenv gloabl 3.6.0
+
+#5	 pip will auto switch to target version | you can use below command to verify
+pip --version
+
+#6	 you can delete diff python version but not delete system defaul python version, it may lead to big incident on system.  
+pyenv uninstall -v 2.7.10
+
+

@@ -1,0 +1,37 @@
+#we can use pyenv_virtualenv to control which third model version we are using in diff project , 
+#it so convenient for us to switch diff project in our UAT or prod.
+
+#step 1: down pyenv_virtualenv from github and configure it to file ~/.bash_profile
+git clone git@github.com:pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile 
+
+#step 2: reload .bash_profile to make pyenv configuration into effect.
+source ~/.bash_profile
+
+#step 3: you can use comand "pyenv help virtualenv" or go to URL:"https://github.com/pyenv/pyenv-virtualenv" to 
+#learn how to use pyenv
+
+$samples as below:
+
+#1  create diff env project in same python version
+pyenv virtualenv 2.7.13 first_project
+pyenv virtualenv 2.7.13 second_project
+
+#2  list all the creation env we can using
+pyenv virtualenvs
+
+#3	activate virtualenv
+pyenv activate first_project
+
+#4	install diff flask version in each project
+pyenv activate first_project
+pip install flask==0.8
+pyenv deactivate 
+
+pyenv activate second_project
+pip install flask==0.9
+
+#5	delete virtualenv
+pyenv virtualenv-delete frist_project
+
+
