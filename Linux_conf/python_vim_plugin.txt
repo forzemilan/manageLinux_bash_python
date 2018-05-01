@@ -1,0 +1,25 @@
+#vim plugin management tools: pathogen.vim
+
+Step1: Copy and paste the following command into your shell:
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+Step2: Runtime Path Manipulation --- configure vimrc
+
+add below setting to your vimrc:
+execute pathogen#infect()
+
+Step3: Install Snipmate:  auto completed plugin
+
+cd ~/.vim/bundle
+git clone https://github.com/tomtom/tlib_vim.git
+git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
+git clone https://github.com/garbas/vim-snipmate.git
+Optional:
+git clone https://github.com/honza/vim-snippets.git
+
+Step4: Jedi-vim: Coding prompt
+pip install jedi
+git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
+
